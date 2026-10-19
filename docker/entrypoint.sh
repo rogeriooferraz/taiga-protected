@@ -9,10 +9,6 @@
 set -euo pipefail
 
 
-# Give permission to taiga:taiga after mounting volumes
-echo Give permission to taiga:taiga
-chown -R taiga:taiga /taiga-protected
-
 # Start Taiga processes
 echo Starting Taiga Protected
 

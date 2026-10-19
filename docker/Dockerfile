@@ -24,12 +24,7 @@ WORKDIR /taiga-protected
 
 RUN set -eux; \
     apt-get update; \
-    # install system dependencies
-    apt-get install -y --no-install-recommends \
-       build-essential \
-       ca-certificates \
-       gosu \
-       git; \
+    apt-get install -y --no-install-recommends ca-certificates gosu; \
     # install Taiga protected dependencies
     python -m pip install --upgrade pip; \
     python -m pip install wheel; \
@@ -40,10 +35,6 @@ RUN set -eux; \
     useradd --system --no-create-home --gid taiga --uid=999 --shell=/bin/bash taiga; \
     chown -R taiga:taiga /taiga-protected; \
     # remove unneeded files and packages
-    apt-get purge -y \
-       build-essential \
-       git; \
-    apt-get autoremove -y; \
     rm -rf /var/lib/apt/lists/*; \
     rm -rf /root/.cache; \
     # clean taiga protected

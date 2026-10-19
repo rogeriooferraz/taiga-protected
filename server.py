@@ -78,9 +78,8 @@ def token_is_valid(token, path):
         )
     except itsdangerous.BadData as exc:
         logger.info(
-            "Token is not valid exc=%s signature=%r max_age=%s date_signed=%r",
+            "Token is not valid exc=%s max_age=%s date_signed=%r",
             exc.__class__.__name__,
-            signature,
             CONFIG.max_age,
             getattr(exc, "date_signed", "Empty"),
         )
