@@ -22,4 +22,5 @@ exec gosu taiga gunicorn server:app \
     --timeout 60 \
     --log-level=info \
     --access-logfile - \
+    --access-logformat '%(h)s %(t)s "%(m)s %(U)s %(H)s" %(s)s %(b)s' \
     "$@"
