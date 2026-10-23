@@ -35,6 +35,7 @@ RUN set -eux; \
     useradd --system --no-create-home --gid taiga --uid=999 --shell=/bin/bash taiga; \
     chown -R taiga:taiga /taiga-protected; \
     # remove unneeded files and packages
+    apt-get purge -y mount; \
     rm -rf /var/lib/apt/lists/*; \
     rm -rf /root/.cache; \
     # clean taiga protected
