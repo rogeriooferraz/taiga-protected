@@ -40,7 +40,10 @@ RUN set -eux; \
     # clean taiga protected
     rm requirements.txt; \
     find . -name '__pycache__' -exec rm -r '{}' +; \
-    find . -name '*pyc' -exec rm -r '{}' +
+    find . -name '*pyc' -exec rm -r '{}' +; \
+    # Packaging tools are only needed while building the image.
+    python -m pip uninstall -y pip setuptools wheel; \
+    /usr/local/bin/python -m pip uninstall -y pip setuptools wheel
 
 EXPOSE 8003
 ENTRYPOINT ["./docker/entrypoint.sh"]
